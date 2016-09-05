@@ -6,7 +6,7 @@
         xmlns:models="clr-namespace:ShapeSample.Models"
         xmlns:local="clr-namespace:ShapeSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="650" Width="825">
     <Window.Resources>
         <models:Book Title="Professional C# 6" x:Key="myBook" />
     </Window.Resources>
@@ -14,8 +14,8 @@
         <Canvas>
             <Canvas.RenderTransform>
                 <TransformGroup>
-                    <TranslateTransform X="44" />
-                    <SkewTransform AngleX="45" AngleY="00"  />
+                    <TranslateTransform X="444" Y="894" />
+                    <SkewTransform AngleX="180" AngleY="120" CenterX="180" CenterY="240"   />
                 </TransformGroup>
 
             </Canvas.RenderTransform>

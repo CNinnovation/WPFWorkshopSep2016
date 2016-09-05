@@ -1,0 +1,34 @@
+﻿<Window x:Class="MySimpleEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MySimpleEditor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="OnOpen" />
+        <CommandBinding Command="Close" Executed="OnClose" />
+        <CommandBinding Command="local:MyCustomCommands.Action1" Executed="OnAction1" CanExecute="CanExecuteAction1" />
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Command="Open" />
+                <MenuItem Header="Save" Command="Save" />
+                <MenuItem Header="Close" Command="Close" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
+                <MenuItem Header="Copy" Command="Copy" />
+                <MenuItem Header="Paste" Command="Paste" />
+                <Separator />
+                <MenuItem Header="Undo" Command="Undo" />
+            </MenuItem>
+            <MenuItem Header="My Actions">
+                <MenuItem Header="Action 1" Command="local:MyCustomCommands.Action1" />
+            </MenuItem>
+        </Menu>
+        <TextBox x:Name="text1" AcceptsReturn="True" AcceptsTab="True" />
+    </DockPanel>
+</Window>
