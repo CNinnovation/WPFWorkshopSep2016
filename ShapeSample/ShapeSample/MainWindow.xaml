@@ -15,7 +15,7 @@
             <Canvas.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="44" />
-                    <SkewTransform AngleX="33" AngleY="10"  />
+                    <SkewTransform AngleX="45" AngleY="00"  />
                 </TransformGroup>
 
             </Canvas.RenderTransform>
