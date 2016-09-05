@@ -1,0 +1,47 @@
+﻿<Window x:Class="ShapeSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:ShapeSample.Models"
+        xmlns:local="clr-namespace:ShapeSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <models:Book Title="Professional C# 6" x:Key="myBook" />
+    </Window.Resources>
+    <Grid>
+        <Canvas>
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform X="44" />
+                    <SkewTransform AngleX="33" AngleY="10"  />
+                </TransformGroup>
+
+            </Canvas.RenderTransform>
+
+
+            <Canvas x:Name="myCanvas" Width="100" Height="100" Canvas.Left="100" Canvas.Top="100">
+                <Ellipse Fill="Yellow" Stroke="Black"
+     StrokeThickness="7"
+     Width="100" Height="100" />
+
+                <Ellipse Fill="Black"
+     Width="10" Height="15"
+     Canvas.Left="28" Canvas.Top="28" />
+
+                <Ellipse Fill="Black"
+     Width="10" Height="15"
+     Canvas.Left="62" Canvas.Top="28" />
+
+                <Path Stroke="Black"
+     StrokeThickness="6"
+     Data="M 30,60 Q 50,90 70,60">
+                    <!--<Path.RenderTransform>
+                        <RotateTransform Angle="45" />
+                    </Path.RenderTransform>-->
+                </Path>
+            </Canvas>
+        </Canvas>
+    </Grid>
+</Window>

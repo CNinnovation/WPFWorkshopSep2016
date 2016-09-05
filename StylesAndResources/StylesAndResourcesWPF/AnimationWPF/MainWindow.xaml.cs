@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace XAMLAttachedProperties
+namespace AnimationWPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,31 +23,25 @@ namespace XAMLAttachedProperties
         public MainWindow()
         {
             InitializeComponent();
-            Canvas.SetTop(button1, 100);
         }
 
-        public int Val1 { get; set; }
-
-        private int val2;
-
-        public int Val2
+        private void OnSimpleAnimation(object sender, RoutedEventArgs e)
         {
-            get { return val2; }
-            set { val2 = value; }
+            var animationWindow = new SimpleAnimation();
+            animationWindow.Show();
         }
 
-
-
-        public int Val3
+        private void OnEasingFunctions(object sender, RoutedEventArgs e)
         {
-            get { return (int)GetValue(Val3Property); }
-            set { SetValue(Val3Property, value); }
+            var easingWindow = new EasingFunctions();
+            easingWindow.Show();
         }
 
-        // Using a DependencyProperty as the backing store for Val3.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty Val3Property =
-            DependencyProperty.Register("Val3", typeof(int), typeof(MainWindow), new PropertyMetadata(0));
+        private void OnKeyframeAnimation(object sender, RoutedEventArgs e)
+        {
+            var keyframeWindow = new KeyFrameAnimation();
+            keyframeWindow.Show();
 
-
+        }
     }
 }
