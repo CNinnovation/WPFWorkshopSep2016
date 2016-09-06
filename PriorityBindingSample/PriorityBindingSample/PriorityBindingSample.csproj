@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2BF5DA1-147E-441A-9415-109A41030105}</ProjectGuid>
+    <ProjectGuid>{09A2473E-B20A-4DEC-9DBB-2291BE72995E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BooksSample</RootNamespace>
-    <AssemblyName>BooksSample</AssemblyName>
+    <RootNamespace>PriorityBindingSample</RootNamespace>
+    <AssemblyName>PriorityBindingSample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,10 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BindableBase.cs" />
-    <Compile Include="BookTemplateSelector.cs" />
-    <Compile Include="Converters\StringArrayToStringConverter.cs" />
-    <Compile Include="Services\BooksService.cs" />
+    <Compile Include="SomeData.cs" />
+    <Compile Include="SomeInfo.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,7 +71,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Book.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

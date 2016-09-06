@@ -6,33 +6,73 @@
         xmlns:models="clr-namespace:BooksSample.Models"
         xmlns:services="clr-namespace:BooksSample.Services"
         xmlns:local="clr-namespace:BooksSample"
+        xmlns:conv="clr-namespace:BooksSample.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
+        <conv:StringArrayToStringConverter x:Key="MyStringConverter" />
         <models:Book Title="A funny book" Publisher="Some publisher" x:Key="abook" />
         <ObjectDataProvider ObjectType="{x:Type services:BooksService}" MethodName="GetTheBook" x:Key="odp" />
+        <DataTemplate x:Key="blueBookTemplate">
+
+            <Border BorderThickness="3" BorderBrush="Blue" Background="LightBlue">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition SharedSizeGroup="myWidth" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding Title}" />
+                    <TextBlock Text="{Binding Publisher}" Grid.Row="1" />
+                    
+                </Grid>
+            </Border>
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="WroxBookTemplate">
+
+            <Border BorderThickness="3" BorderBrush="Blue" Background="Red">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition SharedSizeGroup="myWidth" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding Title}" />
+                    <TextBlock Text="{Binding Publisher}" Grid.Row="1" />
+                </Grid>
+            </Border>
+
+        </DataTemplate>
+
+        <local:BookTemplateSelector x:Key="MyBookSelector"
+                                    DefaultBookTemplate="{StaticResource blueBookTemplate}"
+                                    WroxBookTemplate="{StaticResource WroxBookTemplate}" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="models:Book">
-                    <Grid>
-                        <TextBlock Text="{Binding Title, Mode=OneWay}" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListBox ItemsSource="{Binding }"
+                 ItemTemplateSelector="{StaticResource MyBookSelector}"
+                 Grid.IsSharedSizeScope="True"
+                 IsSynchronizedWithCurrentItem="True" />
+
 
         <!--<StackPanel DataContext="{StaticResource odp}">-->
         <StackPanel Grid.Column="1">
             <TextBox Text="{Binding Path=/Title, Mode=TwoWay}" />
             <TextBox Text="{Binding Path=/Publisher, Mode=TwoWay}" />
+            <TextBlock Text="{Binding Path=/Authors, Mode=OneWay, Converter={StaticResource MyStringConverter}, ConverterParameter=', '}" />
             <Button Content="Show the Book" Click="OnShowBook" />
             <Button Content="Change the book" Click="OnChangeBook" />
+            <Button Content="Add Book" Click="OnAddBook" />
             <!--<TextBlock Text="{Binding Title, Source={StaticResource abook}}" />
             <ListBox x:Name="list1" />
             <ListBox x:Name="list2" />-->

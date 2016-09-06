@@ -12,6 +12,18 @@ namespace BooksSample.Models
         //public string Title { get; set; }
         //public string Publisher { get; set; }
 
+        public Book()
+        {
+
+        }
+
+        public Book(string title, string publisher, params string[] authors)
+        {
+            Title = title;
+            Publisher = publisher;
+            Authors = authors;
+        }
+
         private string _title;
 
         public string Title
@@ -33,6 +45,8 @@ namespace BooksSample.Models
                 SetProperty(ref _publisher, value);
             }
         }
+
+        public string[] Authors { get; set; }
 
 
 

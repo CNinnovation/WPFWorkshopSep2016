@@ -2,6 +2,7 @@
 using BooksSample.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,9 @@ namespace BooksSample
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<string> somestrings = new List<string>() { "one", "two" };
+        private ObservableCollection<string> somestrings = new ObservableCollection<string>() { "one", "two" };
         private Book _theBook;
-        private List<Book> _booksList;
+        private ObservableCollection<Book> _booksList;
 
         public MainWindow()
         {
@@ -34,7 +35,7 @@ namespace BooksSample
             //list2.ItemsSource = somestrings;
 
             _theBook = new BooksService().GetTheBook();
-            _booksList = new List<Book>(new BooksService().GetBooks());
+            _booksList = new ObservableCollection<Book>(new BooksService().GetBooks());
             this.DataContext = _booksList;
         }
 
@@ -47,6 +48,11 @@ namespace BooksSample
         {
             // _theBook.Title = "Professional C# 7.0";
             _booksList.First().Title = "Professional C# 7.0";
+        }
+
+        private void OnAddBook(object sender, RoutedEventArgs e)
+        {
+            _booksList.Add(new Book { Title = "Programming Universal Apps", Publisher = "Self" });
         }
     }
 }
