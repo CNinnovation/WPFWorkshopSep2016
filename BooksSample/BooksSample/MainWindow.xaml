@@ -1,0 +1,43 @@
+﻿<Window x:Class="BooksSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:BooksSample.Models"
+        xmlns:services="clr-namespace:BooksSample.Services"
+        xmlns:local="clr-namespace:BooksSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <models:Book Title="A funny book" Publisher="Some publisher" x:Key="abook" />
+        <ObjectDataProvider ObjectType="{x:Type services:BooksService}" MethodName="GetTheBook" x:Key="odp" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="models:Book">
+                    <Grid>
+                        <TextBlock Text="{Binding Title, Mode=OneWay}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!--<StackPanel DataContext="{StaticResource odp}">-->
+        <StackPanel Grid.Column="1">
+            <TextBox Text="{Binding Path=/Title, Mode=TwoWay}" />
+            <TextBox Text="{Binding Path=/Publisher, Mode=TwoWay}" />
+            <Button Content="Show the Book" Click="OnShowBook" />
+            <Button Content="Change the book" Click="OnChangeBook" />
+            <!--<TextBlock Text="{Binding Title, Source={StaticResource abook}}" />
+            <ListBox x:Name="list1" />
+            <ListBox x:Name="list2" />-->
+        </StackPanel>
+
+
+    </Grid>
+</Window>

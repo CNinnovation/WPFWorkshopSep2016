@@ -1,0 +1,46 @@
+﻿<Window x:Class="ElementToElementBindingSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElementToElementBindingSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Slider x:Name="slider1" Value="0" Minimum="0" Maximum="900" />
+        <Slider x:Name="slider2" Value="1" Minimum="0.1" Maximum="4" Grid.Row="1" />
+        <Canvas Grid.Row="2">
+            <Canvas.LayoutTransform>
+                <ScaleTransform ScaleX="{Binding ElementName=slider2, Path=Value}"
+                                ScaleY="{Binding ElementName=slider2, Path=Value}" />
+            </Canvas.LayoutTransform>
+            <Canvas Canvas.Left="{Binding ElementName=slider1, Path=Value}" 
+                    Grid.Row="2"  x:Name="myCanvas" Width="100" Height="100" Canvas.Top="100">
+                <Ellipse Fill="Yellow" Stroke="Black"
+     StrokeThickness="7"
+     Width="100" Height="100" />
+
+                <Ellipse Fill="Black"
+     Width="10" Height="15"
+     Canvas.Left="28" Canvas.Top="28" />
+
+                <Ellipse Fill="Black"
+     Width="10" Height="15"
+     Canvas.Left="62" Canvas.Top="28" />
+
+                <Path Stroke="Black"
+     StrokeThickness="6"
+     Data="M 30,60 Q 50,90 70,60">
+                    <!--<Path.RenderTransform>
+                        <RotateTransform Angle="45" />
+                    </Path.RenderTransform>-->
+                </Path>
+            </Canvas>
+        </Canvas>
+    </Grid>
+</Window>
