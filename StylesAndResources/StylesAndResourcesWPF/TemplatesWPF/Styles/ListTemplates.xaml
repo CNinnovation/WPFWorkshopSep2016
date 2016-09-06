@@ -39,7 +39,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <StackPanel IsItemsHost="True" Orientation="Horizontal" Background="Yellow" />
+                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" Background="LightGreen" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
