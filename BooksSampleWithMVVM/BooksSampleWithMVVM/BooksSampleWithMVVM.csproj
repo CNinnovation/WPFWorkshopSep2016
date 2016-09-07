@@ -44,6 +44,10 @@
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.2.0\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -74,12 +78,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Events\SelectBookEvent.cs" />
     <Compile Include="Services\BooksService.cs" />
     <Compile Include="Services\IBooksService.cs" />
     <Compile Include="Services\IMessageService.cs" />
     <Compile Include="Services\WPFMessageService.cs" />
     <Compile Include="Utilities\BookTemplateSelector.cs" />
+    <Compile Include="ViewModels\BookDetailViewModel.cs" />
     <Compile Include="ViewModels\BooksListViewModel.cs" />
+    <Compile Include="Views\BookDetailUC.xaml.cs">
+      <DependentUpon>BookDetailUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BooksList.xaml.cs">
       <DependentUpon>BooksList.xaml</DependentUpon>
     </Compile>
@@ -96,6 +105,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\BookStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BookDetailUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,12 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TheBestMVVMFrameworkInTown\TheBestMVVMFrameworkInTown.csproj">
-      <Project>{17890706-cac6-4cfe-b6bb-398914df4129}</Project>
-      <Name>TheBestMVVMFrameworkInTown</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

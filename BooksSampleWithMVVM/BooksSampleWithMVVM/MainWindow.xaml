@@ -12,5 +12,6 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Views:BooksList Grid.Column="0" />
+        <Views:BookDetailUC Grid.Column="1" />
     </Grid>
 </Window>
