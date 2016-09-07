@@ -7,12 +7,20 @@
         xmlns:services="clr-namespace:BooksSample.Services"
         xmlns:local="clr-namespace:BooksSample"
         xmlns:conv="clr-namespace:BooksSample.Converters"
+        xmlns:comp="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <conv:StringArrayToStringConverter x:Key="MyStringConverter" />
         <models:Book Title="A funny book" Publisher="Some publisher" x:Key="abook" />
-        <ObjectDataProvider ObjectType="{x:Type services:BooksService}" MethodName="GetTheBook" x:Key="odp" />
+        <!--<ObjectDataProvider ObjectType="{x:Type services:BooksService}" MethodName="GetTheBook" x:Key="odp" />-->
+        <ObjectDataProvider ObjectType="{x:Type services:BooksService}" MethodName="GetBooks" x:Key="odp" />
+        <CollectionViewSource Source="{StaticResource odp}" x:Key="cvs">
+            <CollectionViewSource.SortDescriptions>
+                <comp:SortDescription PropertyName="Publisher" Direction="Ascending" />
+                <comp:SortDescription PropertyName="Title" Direction="Ascending" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
         <DataTemplate x:Key="blueBookTemplate">
 
             <Border BorderThickness="3" BorderBrush="Blue" Background="LightBlue">
@@ -59,7 +67,7 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding }"
+        <ListBox ItemsSource="{Binding }" DataContext="{StaticResource cvs}"
                  ItemTemplateSelector="{StaticResource MyBookSelector}"
                  Grid.IsSharedSizeScope="True"
                  IsSynchronizedWithCurrentItem="True" />

@@ -65,6 +65,8 @@ namespace BooksSampleWithMVVM.ViewModels
 
         public void OnSave()
         {
+            if (SelectedBook == null) return;
+
             if (_createdNew)
             {
                 _booksService.AddBook(SelectedBook);

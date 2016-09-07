@@ -36,7 +36,13 @@ namespace BooksSample
 
             _theBook = new BooksService().GetTheBook();
             _booksList = new ObservableCollection<Book>(new BooksService().GetBooks());
-            this.DataContext = _booksList;
+
+
+
+            // this.DataContext = _booksList;
+
+            //CollectionViewSource.GetDefaultView(_booksList).Filter =
+            //        b => (b as Book).Publisher == "Wrox Press";
         }
 
         private void OnShowBook(object sender, RoutedEventArgs e)
