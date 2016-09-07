@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksSampleWithMVVM", "Book
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBestMVVMFrameworkInTown", "TheBestMVVMFrameworkInTown\TheBestMVVMFrameworkInTown.csproj", "{17890706-CAC6-4CFE-B6BB-398914DF4129}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksSampleViewModels", "BooksSampleViewModels\BooksSampleViewModels.csproj", "{DADD5581-5FFF-41DA-8BA9-C8BD3270E985}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{17890706-CAC6-4CFE-B6BB-398914DF4129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17890706-CAC6-4CFE-B6BB-398914DF4129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17890706-CAC6-4CFE-B6BB-398914DF4129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADD5581-5FFF-41DA-8BA9-C8BD3270E985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADD5581-5FFF-41DA-8BA9-C8BD3270E985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADD5581-5FFF-41DA-8BA9-C8BD3270E985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADD5581-5FFF-41DA-8BA9-C8BD3270E985}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

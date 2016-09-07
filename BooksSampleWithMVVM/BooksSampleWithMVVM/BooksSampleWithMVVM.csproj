@@ -78,14 +78,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Events\SelectBookEvent.cs" />
-    <Compile Include="Services\BooksService.cs" />
-    <Compile Include="Services\IBooksService.cs" />
-    <Compile Include="Services\IMessageService.cs" />
     <Compile Include="Services\WPFMessageService.cs" />
     <Compile Include="Utilities\BookTemplateSelector.cs" />
-    <Compile Include="ViewModels\BookDetailViewModel.cs" />
-    <Compile Include="ViewModels\BooksListViewModel.cs" />
     <Compile Include="Views\BookDetailUC.xaml.cs">
       <DependentUpon>BookDetailUC.xaml</DependentUpon>
     </Compile>
@@ -118,7 +112,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Book.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -145,6 +138,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BooksSampleViewModels\BooksSampleViewModels.csproj">
+      <Project>{dadd5581-5fff-41da-8ba9-c8bd3270e985}</Project>
+      <Name>BooksSampleViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
