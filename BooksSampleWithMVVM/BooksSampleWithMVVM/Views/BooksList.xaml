@@ -18,7 +18,8 @@
         <StackPanel DockPanel.Dock="Top">
             <Button Content="Show Message" Command="{Binding ViewModel.ShowMessageCommand}" />
         </StackPanel>
-        <ListBox ItemsSource="{Binding ViewModel.Books, Mode=OneWay}" 
+        <ListBox ItemsSource="{Binding ViewModel.Books, Mode=OneWay}"
+                 SelectedItem="{Binding ViewModel.SelectedBook, Mode=OneWayToSource}"
                  ItemTemplateSelector="{StaticResource MyBookTemplateSelector}"
                   Grid.IsSharedSizeScope="True"
                  />

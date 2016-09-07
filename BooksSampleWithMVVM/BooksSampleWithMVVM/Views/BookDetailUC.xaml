@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="BooksSampleWithMVVM.Views.BookDetailUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BooksSampleWithMVVM.Views"
+             mc:Ignorable="d" 
+             x:Name="bookDetailUC"
+             DataContext="{Binding ElementName=bookDetailUC}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Title" />
+            <TextBox Text="{Binding Path=ViewModel.SelectedBook.Title, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="0" x:Name="title" />
+            <Label Content="Publisher" Grid.Row="1" />
+            <TextBox Text="{Binding Path=ViewModel.SelectedBook.Publisher, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="1" x:Name="publisher" />
+            <TextBlock Text="{Binding Path=ViewModel.SelectedBook.Authors, Mode=OneWay}" Grid.Row="2" x:Name="authors" />
+        </Grid>
+    </Grid>
+</UserControl>

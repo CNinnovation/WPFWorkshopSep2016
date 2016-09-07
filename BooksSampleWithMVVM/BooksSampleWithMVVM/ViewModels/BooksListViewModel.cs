@@ -1,9 +1,12 @@
-﻿using BooksSampleWithMVVM.Models;
+﻿using BooksSampleWithMVVM.Events;
+using BooksSampleWithMVVM.Models;
 using BooksSampleWithMVVM.Services;
+using Prism.Commands;
+using Prism.Events;
+using Prism.Mvvm;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using TheBestMVVMFrameworkInTown;
 
 namespace BooksSampleWithMVVM.ViewModels
 {
@@ -11,11 +14,13 @@ namespace BooksSampleWithMVVM.ViewModels
     {
         private readonly IBooksService _booksService;
         private readonly IMessageService _messageService;
+        private readonly IEventAggregator _eventAggregator;
 
         // Dependency Injection
-        public BooksListViewModel(IBooksService booksService, IMessageService messageService)
+        public BooksListViewModel(IBooksService booksService, IEventAggregator eventAggregator, IMessageService messageService)
         {
             _booksService = booksService;
+            _eventAggregator = eventAggregator;
             _messageService = messageService;
 
             var books = _booksService.GetBooks();
@@ -37,6 +42,20 @@ namespace BooksSampleWithMVVM.ViewModels
                 return _books;
             }
         }
+
+        private Book _selectedBook;
+
+        public Book SelectedBook
+        {
+            get { return _selectedBook; }
+            set {
+                if (SetProperty(ref _selectedBook, value))
+                {
+                    _eventAggregator.GetEvent<SelectBookEvent>().Publish(_selectedBook.BookId);
+                }
+            }
+        }
+
 
         public ICommand ShowMessageCommand { get; }
 
