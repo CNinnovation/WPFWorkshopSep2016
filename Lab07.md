@@ -18,7 +18,7 @@ Modify the Books sample application (you can use a different data source as well
 2. View-model
 3. Connect, use IEventAggregator to send messages
 
-### Additional features
+## Additional features
 
 1. Add **Add** features to create new Book objects
 2. Add **Update** to update existing books
