@@ -17,3 +17,9 @@ Modify the Books sample application (you can use a different data source as well
 1. Add another user control for the detail-information
 2. View-model
 3. Connect, use IEventAggregator to send messages
+
+### Additional features
+
+1. Add **Add** features to create new Book objects
+2. Add **Update** to update existing books
+3. Add **Delete** to delete books
