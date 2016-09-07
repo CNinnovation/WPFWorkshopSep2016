@@ -15,16 +15,27 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Label Content="Title" />
-            <TextBox Text="{Binding Path=ViewModel.SelectedBook.Title, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="0" x:Name="title" />
-            <Label Content="Publisher" Grid.Row="1" />
-            <TextBox Text="{Binding Path=ViewModel.SelectedBook.Publisher, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="1" x:Name="publisher" />
-            <TextBlock Text="{Binding Path=ViewModel.SelectedBook.Authors, Mode=OneWay}" Grid.Row="2" x:Name="authors" />
+            <TextBlock Text="{Binding Path=ViewModel.SelectedBook.BookId, Mode=OneWay}" Margin="4" />
+            <Label Content="Title" Grid.Row="1" />
+            <TextBox Text="{Binding Path=ViewModel.SelectedBook.Title, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" 
+                     Grid.Column="1" Grid.Row="1" x:Name="title" Margin="8" />
+            <Label Content="Publisher" Grid.Row="2" />
+            <TextBox Text="{Binding Path=ViewModel.SelectedBook.Publisher, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" 
+                     Grid.Column="1" Grid.Row="2" Margin="8" x:Name="publisher" />
+            <TextBlock Text="{Binding Path=ViewModel.SelectedBook.Authors, Mode=OneWay}" 
+                       Grid.Row="3" x:Name="authors" Margin="8" />
+            <StackPanel Margin="8" Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="2">
+                <Button Content="New" Command="{Binding ViewModel.CreateCommand}" Margin="4" />
+                <Button Content="Cancel" Command="{Binding ViewModel.CancelCommand}" Margin="4" />
+                <Button Content="Save" Command="{Binding ViewModel.SaveCommand}" Margin="4" />
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

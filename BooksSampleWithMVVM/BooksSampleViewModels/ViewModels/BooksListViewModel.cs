@@ -1,4 +1,5 @@
-﻿using BooksSampleWithMVVM.Events;
+﻿using BooksSampleViewModels.Events;
+using BooksSampleWithMVVM.Events;
 using BooksSampleWithMVVM.Models;
 using BooksSampleWithMVVM.Services;
 using Prism.Commands;
@@ -16,6 +17,8 @@ namespace BooksSampleWithMVVM.ViewModels
         private readonly IMessageService _messageService;
         private readonly IEventAggregator _eventAggregator;
 
+        private readonly ObservableCollection<Book> _books = new ObservableCollection<Book>();
+
         // Dependency Injection
         public BooksListViewModel(IBooksService booksService, IEventAggregator eventAggregator, IMessageService messageService)
         {
@@ -23,25 +26,26 @@ namespace BooksSampleWithMVVM.ViewModels
             _eventAggregator = eventAggregator;
             _messageService = messageService;
 
-            var books = _booksService.GetBooks();
-            Books = new ObservableCollection<Book>(books);
+            RefreshBooks();
+
+            _eventAggregator.GetEvent<RefreshBooksEvent>().Subscribe(RefreshBooks);
 
             ShowMessageCommand = new DelegateCommand(OnShowMessage);
 
         }
 
-        private IEnumerable<Book> _books;
-        public IEnumerable<Book> Books
+        public void RefreshBooks()
         {
-            private set
+            _books.Clear();
+            var books = _booksService.GetBooks();
+            foreach (var b in books)
             {
-                SetProperty(ref _books, value);
-            }
-            get
-            {
-                return _books;
+                _books.Add(b);
             }
         }
+
+        public IEnumerable<Book> Books => _books;
+
 
         private Book _selectedBook;
 

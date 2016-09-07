@@ -39,6 +39,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\RefreshBooksEvent.cs" />
     <Compile Include="Events\SelectBookEvent.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -25,5 +25,25 @@ namespace BooksSampleWithMVVM.Services
         public IEnumerable<Book> GetBooks() => _books;
 
         public Book GetBookById(int id) => _books.SingleOrDefault(b => b.BookId == id);
+
+        public void AddBook(Book book)
+        {
+            _books.Add(book);
+        }
+
+        public void UpdateBook(Book book)
+        {
+            Book oldBook = _books.Find(b => b.BookId == book.BookId);
+            _books.Remove(oldBook);
+            _books.Add(book);
+        }
+
+        public void DeleteBook(int id)
+        {
+            Book book = _books.Find(b => b.BookId == id);
+            _books.Remove(book);
+        }
+
+        public int NextId() => _books.Select(b => b.BookId).Max() + 1;
     }
 }
