@@ -10,10 +10,10 @@
       <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type Control}}" />
       <Style TargetType="{x:Type Slider}" BasedOn="{StaticResource {x:Type Control}}" />
       <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type Control}}" />
-      <SolidColorBrush x:Key="redBrush1" Color="Red" Opacity="0.8" />
+      <SolidColorBrush x:Key="redBrush" Color="Red" Opacity="0.8" />
       <SolidColorBrush x:Key="grayBrush" Color="LightGray" Opacity="0.6" />
 
-      <LinearGradientBrush x:Key="redBrush" StartPoint="0,0" EndPoint="1,1">
+      <LinearGradientBrush x:Key="redBrush1" StartPoint="0,0" EndPoint="1,1">
          <GradientStop Color="Yellow" Offset="0" />
          <GradientStop Color="Orange" Offset="0.25" />
          <GradientStop Color="Red" Offset="0.50" />
