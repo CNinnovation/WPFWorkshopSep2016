@@ -25,10 +25,10 @@ namespace BooksSampleWithMVVM.Views
     {
         public BooksList()
         {
-            ViewModel = (Application.Current as App).Container.GetService<BooksListViewModel>();
+            ViewModel = (Application.Current as App).Container.GetService<AzureBooksListViewModel>();
             InitializeComponent();
         }
 
-        public BooksListViewModel ViewModel { get; private set; }
+        public AzureBooksListViewModel ViewModel { get; private set; }
     }
 }

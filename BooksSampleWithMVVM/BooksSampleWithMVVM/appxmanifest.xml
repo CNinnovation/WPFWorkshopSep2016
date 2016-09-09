@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Package
+   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
+  <Identity Name="WPFCourseSample"
+    ProcessorArchitecture="x64"
+    Publisher="CN=CN innovation, O=Development, L=Vienna, S=Vienna, C=Austria"
+    Version="1.0" />
+  <Properties>
+    <DisplayName>WPF Sample App with MVVM</DisplayName>
+    <PublisherDisplayName>CN innovation</PublisherDisplayName>
+    <Description>No description entered</Description>
+    <Logo>***YOUR_PACKAGE_RELATIVE_DISPLAY_LOGO_PATH_HERE***</Logo>
+  </Properties>
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14316.0" MaxVersionTested="10.0.14393.0" />
+  </Dependencies>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust"/>
+  </Capabilities>
+  <Applications>
+    <Application Id="MyAPPId" Executable="BooksSampleWithMVVM.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+       BackgroundColor="#464646"
+       DisplayName="Sample App"
+       Square150x150Logo="Assets/Square150x150Logo.png"
+       Square44x44Logo="Assets/Square44x44Logo.png"
+       Description="Sample App" />
+    </Application>
+  </Applications>
+</Package>

@@ -44,6 +44,14 @@
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.0.9.6\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.6.2.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
@@ -78,8 +86,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="%28Unknown type%29\Books.cs" />
+    <Compile Include="%28Unknown type%29\BooksExtensions.cs" />
+    <Compile Include="%28Unknown type%29\IBooks.cs" />
+    <Compile Include="%28Unknown type%29\IUnknowntype.cs" />
+    <Compile Include="%28Unknown type%29\Models\Book.cs" />
+    <Compile Include="%28Unknown type%29\Models\BookCollection.cs" />
+    <Compile Include="%28Unknown type%29\Unknowntype.cs" />
+    <Compile Include="%28Unknown type%29\UnknowntypeExtensions.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Services\IMyAsyncBooksService.cs" />
+    <Compile Include="Services\MyAsyncBooksService.cs" />
     <Compile Include="Services\WPFMessageService.cs" />
     <Compile Include="Utilities\BookTemplateSelector.cs" />
+    <Compile Include="ViewModels\AzureBooksListViewModel.cs" />
     <Compile Include="Views\BookDetailUC.xaml.cs">
       <DependentUpon>BookDetailUC.xaml</DependentUpon>
     </Compile>
@@ -147,6 +167,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="appxmanifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Square150x150Logo.scale-200.png" />
+    <Resource Include="Assets\Square44x44Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MappingFile.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

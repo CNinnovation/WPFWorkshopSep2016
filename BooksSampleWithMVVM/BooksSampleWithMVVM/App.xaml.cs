@@ -1,4 +1,5 @@
-﻿using BooksSampleWithMVVM.Services;
+﻿using BooksSampleViewModels.Services;
+using BooksSampleWithMVVM.Services;
 using BooksSampleWithMVVM.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Prism.Events;
@@ -30,10 +31,12 @@ namespace BooksSampleWithMVVM
             services.AddSingleton<IBooksService, BooksService>();
             services.AddSingleton<IMessageService, WPFMessageService>();
             services.AddSingleton<IEventAggregator, EventAggregator>();
+            services.AddSingleton<IMyAsyncBooksService, MyAsyncBooksService>();
 
             // view-models
             services.AddTransient<BooksListViewModel>();
             services.AddTransient<BookDetailViewModel>();
+            services.AddTransient<AzureBooksListViewModel>();
 
 
             Container = services.BuildServiceProvider();

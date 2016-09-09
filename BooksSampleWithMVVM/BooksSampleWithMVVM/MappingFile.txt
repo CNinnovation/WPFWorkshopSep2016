@@ -1,0 +1,2 @@
+﻿[Files]
+"MyCustomManifest.xml"       "appxmanifest.xml"
