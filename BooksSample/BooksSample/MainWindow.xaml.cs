@@ -3,6 +3,7 @@ using BooksSample.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace BooksSample
         private ObservableCollection<string> somestrings = new ObservableCollection<string>() { "one", "two" };
         private Book _theBook;
         private ObservableCollection<Book> _booksList;
+        private ICollectionView _booksCollectionView;
 
         public MainWindow()
         {
@@ -39,10 +41,16 @@ namespace BooksSample
 
 
 
-            // this.DataContext = _booksList;
+            this.DataContext = _booksList;
 
             //CollectionViewSource.GetDefaultView(_booksList).Filter =
             //        b => (b as Book).Publisher == "Wrox Press";
+            _booksCollectionView = CollectionViewSource.GetDefaultView(_booksList);
+            _booksCollectionView.SortDescriptions.Add(
+                new SortDescription("Publisher", ListSortDirection.Ascending));
+            _booksCollectionView.SortDescriptions.Add(
+                new SortDescription("Title", ListSortDirection.Descending));
+            // _booksCollectionView.Filter = o => (o as Book).Publisher == "Wrox Press";
         }
 
         private void OnShowBook(object sender, RoutedEventArgs e)
@@ -59,6 +67,16 @@ namespace BooksSample
         private void OnAddBook(object sender, RoutedEventArgs e)
         {
             _booksList.Add(new Book { Title = "Programming Universal Apps", Publisher = "Self" });
+        }
+
+        private void OnPrev(object sender, RoutedEventArgs e)
+        {
+            _booksCollectionView.MoveCurrentToPrevious();
+        }
+
+        private void OnNext(object sender, RoutedEventArgs e)
+        {
+            _booksCollectionView.MoveCurrentToNext();
         }
     }
 }

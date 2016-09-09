@@ -15,12 +15,12 @@
         <models:Book Title="A funny book" Publisher="Some publisher" x:Key="abook" />
         <!--<ObjectDataProvider ObjectType="{x:Type services:BooksService}" MethodName="GetTheBook" x:Key="odp" />-->
         <ObjectDataProvider ObjectType="{x:Type services:BooksService}" MethodName="GetBooks" x:Key="odp" />
-        <CollectionViewSource Source="{StaticResource odp}" x:Key="cvs">
+        <!--<CollectionViewSource Source="{StaticResource odp}" x:Key="cvs">
             <CollectionViewSource.SortDescriptions>
                 <comp:SortDescription PropertyName="Publisher" Direction="Ascending" />
                 <comp:SortDescription PropertyName="Title" Direction="Ascending" />
             </CollectionViewSource.SortDescriptions>
-        </CollectionViewSource>
+        </CollectionViewSource>-->
         <DataTemplate x:Key="blueBookTemplate">
 
             <Border BorderThickness="3" BorderBrush="Blue" Background="LightBlue">
@@ -63,11 +63,15 @@
                                     WroxBookTemplate="{StaticResource WroxBookTemplate}" />
     </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding }" DataContext="{StaticResource cvs}"
+        <ListBox ItemsSource="{Binding }" 
                  ItemTemplateSelector="{StaticResource MyBookSelector}"
                  Grid.IsSharedSizeScope="True"
                  IsSynchronizedWithCurrentItem="True" />
@@ -86,6 +90,9 @@
             <ListBox x:Name="list2" />-->
         </StackPanel>
 
-
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button Click="OnPrev">Prev</Button>
+            <Button Click="OnNext">Next</Button>
+        </StackPanel>
     </Grid>
 </Window>
